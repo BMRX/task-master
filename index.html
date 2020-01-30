@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Master</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+
+  <body onload="load()">
+    <header id="header">
+      <div id="drag-region">
+          <!-- Here be the menu -->
+          <div id="window-controls">
+              <!-- <div class="button" id="config-button" onclick="">
+                  <span style="font-size: 15px !important;">&#xE713;</span>
+              </div> -->
+              <div class="button" id="min-button">
+                  <span>&#xE921;</span>
+              </div>
+              <div class="button" id="max-button">
+                  <span>&#xE922;</span>
+              </div>
+              <div class="button" id="restore-button">
+                  <span>&#xE923;</span>
+              </div>
+              <div class="button" id="close-button">
+                  <span>&#xE8BB;</span>
+              </div>
+          </div>
+      </div>
+  </header>
+    <div class="wrapper">
+      <div id="loader"></div>
+      <div id="content">Ayyy my bruddas</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./js/renderer.js"></script>
+</html>

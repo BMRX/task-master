@@ -1,0 +1,20 @@
+{
+  "name": "task-master",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BMRX/task-master.git"
+  },
+  "author": "Mike Bergstrom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BMRX/task-master/issues"
+  },
+  "homepage": "https://github.com/BMRX/task-master#readme",
+  "dependencies": {}
+}
