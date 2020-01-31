@@ -1,54 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Task Master</title>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="script-src 'self' 'unsafe-inline';"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="./css/style.css" rel="stylesheet" />
-  </head>
 
-  <body onload="load()">
-    <header id="header">
-      <div id="drag-region">
-          <!-- Here be the menu -->
-          <div id="window-controls">
-              <!-- <div class="button" id="config-button" onclick="">
-                  <span style="font-size: 15px !important;">&#xE713;</span>
-              </div> -->
-              <div class="button" id="min-button">
-                  <span>&#xE921;</span>
-              </div>
-              <div class="button" id="max-button">
-                  <span>&#xE922;</span>
-              </div>
-              <div class="button" id="restore-button">
-                  <span>&#xE923;</span>
-              </div>
-              <div class="button close" id="close-button">
-                  <span>&#xE8BB;</span>
-              </div>
-          </div>
+<head>
+  <title>Task Master</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header id="header">
+    <div id="drag-region">
+      <!-- Here be the menu -->
+      <div id="window-controls">
+        <div class="button" id="min-button">
+          <span>&#xE921;</span>
+        </div>
+        <div class="button" id="max-button">
+          <span>&#xE922;</span>
+        </div>
+        <div class="button" id="restore-button">
+          <span>&#xE923;</span>
+        </div>
+        <div class="button close" id="close-button">
+          <span>&#xE8BB;</span>
+        </div>
       </div>
+    </div>
   </header>
 
-    <div class="wrapper">
-      <div id="loader"></div>
-      <div id="context"></div>
-      <div id="taskList">
+  <div class="wrapper">
+    <div id="task-detail">
+      <div id="task-header"></div>
+      <div id="details"></div>
+    </div>
+
+    
+
+    <div id="task-list" class="animate-bottom">
+      <div id="page-buttons">
+        <div class="btn defaultOpen active" onclick="togglePage(event, 'open')">open</div>
+        <div class="btn" onclick="togglePage(event, 'closed')">closed</div>
+        <div class="btn" onclick="togglePage(event, 'config')">config</div>
+        <div id="new-task">+</div>
+      </div>
+      <div id="open" class="page">
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+      </div>
+      <div id="closed" class="page">
         <div class="task">
-          <div class="left">Charlotte</div>
-          <div class="right">01/30/2020</div>
+          <div class="left">
+            <p>Snow School</p>
+          </div>
+          <div class="right">
+            <p>02/30/2020</p>
+          </div>
         </div>
         <div class="task"></div>
         <div class="task"></div>
         <div class="task"></div>
         <div class="task"></div>
       </div>
+      <div id="config" class="page">
+        <p>Config page</p>
+      </div>
     </div>
+    <footer>
+      <div id="msg"></div>
+    </footer>
+  </div>
+  
+</body>
+<script type="text/javascript" src="./js/renderer.js"></script>
 
-  </body>
-  <script type="text/javascript" src="./js/renderer.js"></script>
 </html>

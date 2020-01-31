@@ -2,9 +2,15 @@ const { ipcRenderer } = require("electron");
 const remote = require("electron").remote;
 const { fs } = require("fs");
 
+let tasks = {}, quotes;
+
 // When document has loaded, initialise
 document.onreadystatechange = () => {
 	if (document.readyState == "complete") {
+		//setTimeout(showContent, 1000);
+		showContent();
+		// document.querySelector("#loading").style.display = "none";
+		// document.querySelector("#task-list").style.display = "block";
 		handleWindowControls();
 	}
 };
@@ -25,7 +31,8 @@ function handleWindowControls() {
 	});
 
 	document.getElementById("close-button").addEventListener("click", event => {
-		win.close();
+		syncAndClose();
+		//win.close();
 	});
 
 	// Toggle maximise/restore buttons when maximisation/unmaximisation occurs
@@ -43,22 +50,74 @@ function handleWindowControls() {
 	}
 }
 
-ipcRenderer.on("init", (event, arg) => {
-	
-	// Hide loading
-	
-	
+ipcRenderer.on("init", (event, tArg, qArg) => {
+		tasks = tArg;
+		quotes = qArg.index;
+		setRandQuote();
+		//testObjects(100000);
+		console.log(tasks);
 });
 
-function load() {
-    timeOut = setTimeout(showContent, 3000);
+document.getElementsByClassName("defaultOpen")[0].click();
+
+function setRandQuote() {
+	// document.getElementById("loading").innerHTML = "";
+	document.getElementById("msg").innerHTML = "";
+	var rand = quotes[Math.floor(Math.random() * quotes.length)];
+	document.getElementById("msg").innerHTML = rand;
+	// document.getElementById("loading").innerHTML = rand;
+	setTimeout(setRandQuote, 15000);
 }
 
 function showContent() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("taskList").style.display = "inline-block";
+    //document.querySelector("#loading").style.display = "none";
+    document.querySelector("#task-list").style.display = "block";
 }
 
-function createTask() {
-    
+function createTask(dept, detail, title, date) {
+	// define task
+    let newTask = {
+		dept: dept,
+		title: title,
+		detail: detail,
+		date: date
+	}
+	// push task to list
+	tasks.open.push(newTask);
+}
+
+function syncAndClose() {
+	// getRandQuote();
+	// document.querySelector("#loading").style.display = "block";
+	// document.querySelector("#task-list").style.display = "none";
+	// Send objects to save
+	ipcRenderer.send("sync-and-close", tasks);
+}
+
+function togglePage(evt, name) {
+	var i, pages, btns;
+
+	pages = document.getElementsByClassName("page");
+	for (i = 0; i < pages.length; i++) {
+		pages[i].style.display = "none";
+	}
+
+	btns = document.getElementsByClassName("btn");
+	for (i = 0; i < btns.length; i++) {
+		btns[i].className = btns[i].className.replace(" active", "");
+	}
+  
+	document.getElementById(name).style.display = "block";
+	evt.currentTarget.className += " active";
+  }
+
+
+/* Testing */
+function testObjects(x) {
+	tasks.open = [];
+	tasks.closed = [];
+	for(let i = 0; i < x; i++) {
+		tasks.open.push({ open:i })
+		tasks.closed.push({ closed:i })
+	}
 }
