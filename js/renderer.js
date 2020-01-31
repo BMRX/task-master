@@ -111,17 +111,31 @@ function togglePage(evt, name) {
 	evt.currentTarget.className += " active";
 }
 
-function submitItem(id) {
+function addOpen() {
 	let obj = {};
-	obj.name = document.querySelectorAll('[name="name"]')[0].value;
-	obj.price = document.querySelectorAll('[name="price"]')[0].value.replace(/['"]+/g, '');
+	obj.title = document.querySelectorAll('[name="title"]')[0].value;
 	obj.group = document.querySelectorAll('[name="group"]')[0].value;
+	obj.name = document.querySelectorAll('[name="name"]')[0].value;
 	obj.description = document.querySelectorAll('[name="description"]')[0].value;
+	obj.date = setDate();
 	console.log(obj);
-	ipcRenderer.send('INSERT-ITEM', obj);
+	//ipcRenderer.send('INSERT-ITEM', obj);
+	//document.getElementById(id.toString()).reset();
+}
+
+function formReset(id) {
 	document.getElementById(id.toString()).reset();
 }
 
+function setDate() {
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1; //months from 1-12
+	var day = dateObj.getUTCDate();
+	var year = dateObj.getUTCFullYear();
+
+	newdate = day + "/" + month + "/" + year;
+	return newdate;
+}
 /* Testing */
 function testObjects(x) {
 	tasks.open = [];

@@ -34,8 +34,6 @@ app.on("ready", () => {
 	main.show();
 });
 
-
-
 let quotes = JSON.parse(fs.readFileSync("./quotes.json", { encoding: "utf8" }));
 
 ipcMain.on("sync-and-close", (event, arg) => {
