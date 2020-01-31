@@ -51,11 +51,11 @@ function handleWindowControls() {
 }
 
 ipcRenderer.on("init", (event, tArg, qArg) => {
-		tasks = tArg;
-		quotes = qArg.index;
-		setRandQuote();
-		//testObjects(100000);
-		console.log(tasks);
+	tasks = tArg;
+	quotes = qArg.index;
+	setRandQuote();
+	//testObjects(100000);
+	console.log(tasks);
 });
 
 document.getElementsByClassName("defaultOpen")[0].click();
@@ -70,13 +70,13 @@ function setRandQuote() {
 }
 
 function showContent() {
-    //document.querySelector("#loading").style.display = "none";
-    document.querySelector("#task-list").style.display = "block";
+	//document.querySelector("#loading").style.display = "none";
+	document.querySelector("#task-list").style.display = "block";
 }
 
 function createTask(dept, detail, title, date) {
 	// define task
-    let newTask = {
+	let newTask = {
 		dept: dept,
 		title: title,
 		detail: detail,
@@ -106,18 +106,28 @@ function togglePage(evt, name) {
 	for (i = 0; i < btns.length; i++) {
 		btns[i].className = btns[i].className.replace(" active", "");
 	}
-  
+
 	document.getElementById(name).style.display = "block";
 	evt.currentTarget.className += " active";
-  }
+}
 
+function submitItem(id) {
+	let obj = {};
+	obj.name = document.querySelectorAll('[name="name"]')[0].value;
+	obj.price = document.querySelectorAll('[name="price"]')[0].value.replace(/['"]+/g, '');
+	obj.group = document.querySelectorAll('[name="group"]')[0].value;
+	obj.description = document.querySelectorAll('[name="description"]')[0].value;
+	console.log(obj);
+	ipcRenderer.send('INSERT-ITEM', obj);
+	document.getElementById(id.toString()).reset();
+}
 
 /* Testing */
 function testObjects(x) {
 	tasks.open = [];
 	tasks.closed = [];
-	for(let i = 0; i < x; i++) {
-		tasks.open.push({ open:i })
-		tasks.closed.push({ closed:i })
+	for (let i = 0; i < x; i++) {
+		tasks.open.push({ open: i })
+		tasks.closed.push({ closed: i })
 	}
 }

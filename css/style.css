@@ -1,370 +1,408 @@
 html,
 body {
-	margin: 0;
-	padding: 0;
-	width: 100vw;
-	height: 100vh;
-	background-image: linear-gradient(to bottom right, #2e333f, #272c36);
-	color: #f3f3f3;
-	font-family: Consolas, monaco, monospace;
-	font-style: normal;
-	font-variant: normal;
-	overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, #2e333f, #272c36);
+  color: #f3f3f3;
+  font-family: Consolas, monaco, monospace;
+  font-style: normal;
+  font-variant: normal;
+  overflow: hidden;
 }
 h1 {
-	font-family: Consolas, monaco, monospace;
-	font-size: 28px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 700;
-	line-height: 28px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 28px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 28px;
 }
 h2 {
-	font-family: Consolas, monaco, monospace;
-	font-size: 25px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 700;
-	line-height: 25px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 25px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 25px;
 }
 h3 {
-	font-family: Consolas, monaco, monospace;
-	font-size: 22px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 700;
-	line-height: 25px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 22px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 25px;
 }
 p {
-	font-family: Consolas, monaco, monospace;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 25px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 25px;
 }
 blockquote {
-	font-family: Consolas, monaco, monospace;
-	font-size: 17px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 25px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 25px;
 }
 pre {
-	font-family: Consolas, monaco, monospace;
-	font-size: 11px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 25px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 11px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 25px;
 }
 
 /* UI */
 .wrapper {
-	padding: 0 0 0 0;
-	min-height: 100vh;
-	min-width: 100vh;
-	margin-top: 32px;
-	display: flex;
-	justify-content: center;
+  padding: 0 0 0 0;
+  min-height: 100vh;
+  min-width: 100vh;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
 }
 #header {
-	height: 32px;
-	width: 100%;
-	box-sizing: border-box;
-	background-color: rgba(36, 37, 39, 0.582);
-	color: lightgray;
-	/* z-index: 3; */
-	/* border: 2px #695a4e solid; */
-	border-bottom: 1px rgba(50, 61, 77, 0.8) solid;
-	position: fixed;
-	top: 0;
+  height: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(36, 37, 39, 0.582);
+  color: lightgray;
+  border-bottom: 1px rgba(50, 61, 77, 0.8) solid;
+  position: fixed;
+  top: 0;
 }
 #header #drag-region {
-	width: 100%;
-	height: 100%;
-	-webkit-app-region: drag;
+  width: 100%;
+  height: 100%;
+  -webkit-app-region: drag;
 }
 #window-controls {
-	display: grid;
-	grid-template-columns: repeat(4, 46px);
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
-	font-family: "Segoe MDL2 Assets";
-	font-size: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 46px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  font-family: "Segoe MDL2 Assets";
+  font-size: 10px;
 }
 #window-controls .button {
-	grid-row: 1 / span 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	/* background-color: #242c38; */
+  grid-row: 1 / span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 #window-controls #config-button {
-	grid-column: 1;
+  grid-column: 1;
 }
 #window-controls #min-button {
-	grid-column: 2;
+  grid-column: 2;
 }
 #window-controls #max-button,
 #window-controls #restore-button {
-	grid-column: 3;
+  grid-column: 3;
 }
 #window-controls #close-button {
-	grid-column: 4;
+  grid-column: 4;
 }
 #window-controls {
-	-webkit-app-region: no-drag;
+  -webkit-app-region: no-drag;
 }
 #window-controls .button {
-	user-select: none;
-	cursor: default;
+  user-select: none;
+  cursor: default;
 }
 #window-controls .button:hover {
-	background: rgba(50, 61, 77, 0.795);
+  background: rgba(50, 61, 77, 0.795);
 }
 #window-controls .close {
-	user-select: none;
-	cursor: default;
+  user-select: none;
+  cursor: default;
 }
 #window-controls .close:hover {
-	background-color: #d11023;
+  background-color: #d11023;
 }
 #restore-button {
-	display: none !important;
+  display: none !important;
 }
 .maximized #titlebar {
-	width: 100%;
-	padding: 0;
+  width: 100%;
+  padding: 0;
 }
 .maximized #window-title {
-	margin-left: 12px;
+  margin-left: 12px;
 }
 .maximized #restore-button {
-	display: flex !important;
+  display: flex !important;
 }
 .maximized #max-button {
-	display: none;
+  display: none;
 }
 
 #config {
-	background-color: rgba(71, 76, 88, 0.5);
-	padding: 15px;
-	line-height: 30px;
-	display: none;
+  background-color: rgba(71, 76, 88, 0.5);
+  padding: 15px;
+  line-height: 30px;
+  display: none;
 }
 
 #config p {
-	margin: 0;
-	line-height: 30px;
+  margin: 0;
+  line-height: 30px;
 }
 
 #page-buttons {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 1px;
-	margin-top: 1px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 #page-buttons .btn {
-	line-height: 10px;
-	background-color: rgba(71, 76, 88, 0.5);
-	display: inline-block;
-	padding: 5px;
-	margin-right: 1px;
-	cursor: default;
-	color: #fff;
+  user-select: none;
+  line-height: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  margin-right: 1px;
+  cursor: default;
+  color: #fff;
 }
 
 #page-buttons .btn:hover {
-	background: rgba(50, 61, 77, 0.795);
-}
-
-#task-list {
-	display: block;
-	padding: 1px 0 0 0;
-	width: 75%;
-}
-
-#task-list .task {
-	user-select: none;
-	padding: 15px;
-	height: 30px;
-	margin-bottom: 1px;
-	display: block;
-	background-color: rgba(71, 76, 88, 0.5);
-	/* line-height: 23px; */
-}
-
-#task-list .task:hover {
-	background-color: rgba(50, 61, 77, 0.795);
-}
-
-#task-list .task .left {
-	width: 50%;
-	float: left;
-}
-
-#task-list .task .left p {
-	margin: 0;
-	line-height: 30px;
-}
-
-#task-list .task .right {
-	float: right;
-	text-align: right;
-}
-
-#task-list .task .right p {
-	margin: 0;
-	line-height: 30px;
-}
-
-footer {
-	position: fixed;
-	bottom: 0;
-	font-size: 15px;
-	padding: 5px;
-	height: 15px; /* Height of the footer */
-	/* background: #6cf; */
-	z-index: 3;
-	width: 100%;
-	text-align: center;
+  background: rgba(50, 61, 77, 0.795);
 }
 
 #new-task {
-	line-height: 10px;
-	background-color: rgba(71, 76, 88, 0.5);
-	display: inline-block;
-	padding: 5px;
-	cursor: default;
+  user-select: none;
+  line-height: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
+  display: inline-block;
+  padding: 5px 15px 5px 15px;
+  cursor: default;
+  margin-right: 1px;
 }
 
 #new-task:hover {
-	background-color: rgba(50, 61, 77, 0.795);
+  background-color: rgba(50, 61, 77, 0.795);
 }
 #new-task:active {
-	background-color: rgba(50, 61, 77, 0.795);
-	color: #3498db !important;
+  background-color: rgba(50, 61, 77, 0.795);
+  color: #3498db !important;
+}
+
+#task-list {
+  display: block;
+  padding: 1px 0 0 0;
+  width: 75%;
+  height: 100vh;
+}
+
+#task-list .task {
+  user-select: none;
+  padding: 15px;
+  height: 30px;
+  margin-bottom: 1px;
+  display: block;
+  background-color: rgba(71, 76, 88, 0.5);
+  /* line-height: 23px; */
+}
+
+#task-list .task:hover {
+  background-color: rgba(50, 61, 77, 0.795);
+}
+
+#task-list .task .left {
+  width: 50%;
+  float: left;
+}
+
+#task-list .task .left p {
+  margin: 0;
+  line-height: 30px;
+}
+
+#task-list .task .right {
+  float: right;
+  text-align: right;
+}
+
+#task-list .task .right p {
+  margin: 0;
+  line-height: 30px;
+}
+
+#new-task-modal {
+  display: none;
+}
+
+#open {
+  overflow-y: scroll;
+  height: calc(100% - 81px);
+  padding-right: 1px;
+}
+
+#closed {
+  overflow-y: scroll;
+  height: calc(100% - 81px);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 15px;
+  height: 20px;
+  z-index: 3;
+  width: 75%;
+  text-align: center;
+  /* background-color: salmon; */
 }
 
 /* Center the loader */
 #msg {
-	margin: auto;
-	background-image: linear-gradient(
-		to right,
-		rgba(255, 255, 255, 0.05),
-		rgba(255, 255, 255, 0.712)
-	);
-	background-repeat: no-repeat;
-	background-size: 80%;
-	animation: gradient 15s linear infinite;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+  user-select: none;
+  margin: auto;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.712)
+  );
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: gradient 15s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #loading {
-	margin: auto;
-	background-image: linear-gradient(
-		to right,
-		rgba(255, 255, 255, 0.05),
-		rgba(255, 255, 255, 0.712)
-	);
-	background-repeat: no-repeat;
-	background-size: 80%;
-	animation: gradient 5s linear infinite;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+  margin: auto;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.712)
+  );
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: gradient 5s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: -500%;
-	}
-	100% {
-		background-position: 500%;
-	}
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
 }
 
 /* Basic Spinner */
 #loader {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	z-index: 1;
-	width: 150px;
-	height: 150px;
-	margin: -75px 0 0 -75px;
-	border: 16px solid rgba(50, 61, 77, 0.795);
-	border-radius: 50%;
-	border-top: 16px solid rgba(71, 76, 88, 0.5);
-	width: 120px;
-	height: 120px;
-	-webkit-animation: spin 0.25s linear infinite;
-	animation: spin 0.25s linear infinite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid rgba(50, 61, 77, 0.795);
+  border-radius: 50%;
+  border-top: 16px solid rgba(71, 76, 88, 0.5);
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 0.25s linear infinite;
+  animation: spin 0.25s linear infinite;
 }
 
 @-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Add animation to page content */
 .animate-bottom {
-	position: relative;
-	-webkit-animation-name: animatebottom;
-	-webkit-animation-duration: 0.5s;
-	animation-name: animatebottom;
-	animation-duration: 0.5s;
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animatebottom;
+  animation-duration: 0.5s;
 }
 
 @-webkit-keyframes animatebottom {
-	from {
-		bottom: -100px;
-		opacity: 0;
-	}
-	to {
-		bottom: 0px;
-		opacity: 1;
-	}
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
 }
 
 @keyframes animatebottom {
-	from {
-		bottom: -100px;
-		opacity: 0;
-	}
-	to {
-		bottom: 0;
-		opacity: 1;
-	}
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 .page {
-	display: none;
+  display: none;
 }
 
 .active {
-	background-color: rgba(91, 100, 119, 0.541) !important;
-	color: #3498db !important;
+  background-color: rgba(91, 100, 119, 0.541) !important;
+  color: #3498db !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-left: 1px solid #272c36;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 76, 88, 0.5);
+  width: 9px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(50, 61, 77, 0.795);
 }

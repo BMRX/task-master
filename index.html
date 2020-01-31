@@ -33,17 +33,31 @@
     <div id="task-detail">
       <div id="task-header"></div>
       <div id="details"></div>
-    </div>
-
-    
+    </div>    
 
     <div id="task-list" class="animate-bottom">
+
       <div id="page-buttons">
+        <div id="new-task" class="btn" onclick="togglePage(event, 'new-task-modal')">+</div>
         <div class="btn defaultOpen active" onclick="togglePage(event, 'open')">open</div>
         <div class="btn" onclick="togglePage(event, 'closed')">closed</div>
         <div class="btn" onclick="togglePage(event, 'config')">config</div>
-        <div id="new-task">+</div>
       </div>
+
+      <div id="new-task-modal" class="page">
+        <form action="javascript:submitItem('item-form');" id="item-form">
+          <input type="text" name="name" />
+          <select name="group">
+            <option value="Tickets">Tickets</option>
+            <option value="Rentals">Rentals</option>
+            <option value="Snow School">Snow School</option>
+            <option value="Retail">Retail</option>
+            <option value="FNB">FNB</option>
+          </select>
+          <textarea name="description" style="width: 100%; height: 250px; resize: none;"></textarea>
+        </form>
+      </div>
+
       <div id="open" class="page">
         <div class="task"><div class="left"><p>Charlotte</p></div>
           <div class="right"><p>01/30/2020</p></div>
@@ -99,7 +113,14 @@
         <div class="task"><div class="left"><p>Charlotte</p></div>
           <div class="right"><p>01/30/2020</p></div>
         </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
+        <div class="task"><div class="left"><p>Charlotte</p></div>
+          <div class="right"><p>01/30/2020</p></div>
+        </div>
       </div>
+
       <div id="closed" class="page">
         <div class="task">
           <div class="left">
@@ -114,13 +135,18 @@
         <div class="task"></div>
         <div class="task"></div>
       </div>
+
       <div id="config" class="page">
         <p>Config page</p>
       </div>
+
+      <footer>
+        <div id="msg"></div>
+      </footer>
+
     </div>
-    <footer>
-      <div id="msg"></div>
-    </footer>
+  </div>>
+    
   </div>
   
 </body>
