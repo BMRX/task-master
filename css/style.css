@@ -4,26 +4,35 @@ body {
 	padding: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: #011627;
+	background-image: linear-gradient(to right, #3b3b3b , #353434);
+	color: #f3f3f3;
 	font-family: Consolas, monaco, monospace;
 	overflow: hidden;
 }
 
 h1 {
 	font-family: Consolas, monaco, monospace;
-	font-size: 23px;
+	font-size: 28px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 700;
-	line-height: 23px;
+	line-height: 28px;
+}
+h2 {
+	font-family: Consolas, monaco, monospace;
+	font-size: 25px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 25px;
 }
 h3 {
 	font-family: Consolas, monaco, monospace;
-	font-size: 17px;
+	font-size: 22px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 700;
-	line-height: 23px;
+	line-height: 25px;
 }
 p {
 	font-family: Consolas, monaco, monospace;
@@ -31,7 +40,7 @@ p {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
-	line-height: 23px;
+	line-height: 25px;
 }
 blockquote {
 	font-family: Consolas, monaco, monospace;
@@ -39,7 +48,7 @@ blockquote {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
-	line-height: 23px;
+	line-height: 25px;
 }
 pre {
 	font-family: Consolas, monaco, monospace;
@@ -47,7 +56,7 @@ pre {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
-	line-height: 23px;
+	line-height: 25px;
 }
 
 /* UI */
@@ -63,10 +72,11 @@ pre {
 	height: 32px;
 	width: 100%;
 	box-sizing: border-box;
-	background-color: #242c38;
+	/* background-color: #01121f; */
 	color: lightgray;
 	/* z-index: 3; */
 	/* border: 2px #695a4e solid; */
+	border-bottom: 1px #212121 solid;
 	position: fixed;
 	top: 0;
 }
@@ -92,7 +102,7 @@ pre {
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	background-color: #242c38;
+	/* background-color: #242c38; */
 }
 #window-controls #config-button {
 	grid-column: 1;
@@ -141,10 +151,41 @@ pre {
 	display: none;
 }
 
-#content {
-    padding: 25px;
-    background-color: #5c6979;
-	display: inline-block;
+#taskList {
+    padding: 25px 0 0 0;
+	display: none;
+	width: 75%;
+}
+
+#taskList .task {
+	padding: 15px;
+	height: 30px;
+	margin-bottom: 1px;
+	display: block;
+	background-color: rgba(46, 46, 46, 0.5);
+	vertical-align: middle;
+	/* line-height: 23px; */
+}
+
+#taskList .task .left {
+	width: 50%;
+	float: left;
+	margin: auto;
+	line-height: 30px;
+}
+
+
+#taskList .task .right {
+	float: right;
+	text-align: right;
+	margin: auto;
+	line-height: 30px;
+}
+
+#context {
+	padding: 25px;
+    background-color: rgba(46, 46, 46, 0.8);
+	display: none;
 	width: 75%;
 }
 

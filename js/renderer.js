@@ -56,5 +56,9 @@ function load() {
 
 function showContent() {
     document.getElementById("loader").style.display = "none";
-    document.getElementById("content").style.display = "block";
+    document.getElementById("taskList").style.display = "inline-block";
+}
+
+function createTask() {
+    
 }
