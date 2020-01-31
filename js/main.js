@@ -40,7 +40,7 @@ ipcMain.on("sync-and-close", (event, arg) => {
 	tasks.open = [];
 	tasks.closed = [];
 
-	if (arg.open.length > 0 && arg.closed.length > 0) {
+	if (arg.open.length > 0 || arg.closed.length > 0) {
 		arg.open.forEach(element => {
 			tasks.open.push(element);
 		});

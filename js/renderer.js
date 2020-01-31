@@ -118,13 +118,14 @@ function addOpen() {
 	obj.name = document.querySelectorAll('[name="name"]')[0].value;
 	obj.description = document.querySelectorAll('[name="description"]')[0].value;
 	obj.date = setDate();
-	console.log(obj);
+	tasks.open.push(obj);
+	console.log(tasks);
 	//ipcRenderer.send('INSERT-ITEM', obj);
-	//document.getElementById(id.toString()).reset();
+	document.getElementById("task-form").reset();
 }
 
-function formReset(id) {
-	document.getElementById(id.toString()).reset();
+function formReset() {
+	document.getElementById("task-form").reset();
 }
 
 function setDate() {

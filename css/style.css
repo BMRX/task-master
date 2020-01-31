@@ -388,7 +388,7 @@ footer {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-  border-left: 1px solid #272c36;
+  
 }
 
 /* Track */
