@@ -54,6 +54,7 @@ ipcRenderer.on("init", (event, tArg, qArg) => {
 	tasks = tArg;
 	quotes = qArg.index;
 	setRandQuote();
+	populateLists();
 	//testObjects(100000);
 	console.log(tasks);
 });
@@ -74,16 +75,27 @@ function showContent() {
 	document.querySelector("#task-list").style.display = "block";
 }
 
-function createTask(dept, detail, title, date) {
-	// define task
-	let newTask = {
-		dept: dept,
-		title: title,
-		detail: detail,
-		date: date
-	}
-	// push task to list
-	tasks.open.push(newTask);
+function populateLists() {
+	let open = document.getElementById("open");
+	let closed = document.getElementById("closed");
+	let task = document.createElement("div");
+	task.setAttribute("class", "task");
+	let left = document.createElement("div");
+	left.setAttribute("class", "left");
+	let right = document.createElement("div");
+	right.setAttribute("class", "right");
+	let title = document.createElement("p");
+	let date = document.createElement("p");
+
+	tasks.open.forEach(item => {
+		title.innerText = item.title;
+		left.appendChild(title);
+		task.appendChild(left);
+		date.innerText = item.date;
+		right.appendChild(date);
+		task.appendChild(right);
+		open.appendChild(task);
+	});
 }
 
 function syncAndClose() {
