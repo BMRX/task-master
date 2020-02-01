@@ -27,14 +27,15 @@ app.on("ready", () => {
 	});
 
 	main.webContents.once("dom-ready", () => {
-		main.webContents.send("init", tasks, quotes);
+		main.webContents.send("init", tasks);
 		main.webContents.openDevTools();
 	});
+	main.maximize();
 	main.loadFile("./index.html");
 	main.show();
 });
 
-let quotes = JSON.parse(fs.readFileSync("./quotes.json", { encoding: "utf8" }));
+//let quotes = JSON.parse(fs.readFileSync("./quotes.json", { encoding: "utf8" }));
 
 ipcMain.on("sync-and-close", (event, arg) => {
 	tasks.open = [];

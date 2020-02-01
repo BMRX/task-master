@@ -6,13 +6,13 @@ body {
   height: 100%;
   background-image: linear-gradient(to bottom right, #2e333f, #272c36);
   color: #f3f3f3;
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-style: normal;
   font-variant: normal;
   overflow: hidden;
 }
 h1 {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 28px;
   font-style: normal;
   font-variant: normal;
@@ -20,7 +20,7 @@ h1 {
   line-height: 28px;
 }
 h2 {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 25px;
   font-style: normal;
   font-variant: normal;
@@ -28,7 +28,7 @@ h2 {
   line-height: 25px;
 }
 h3 {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 22px;
   font-style: normal;
   font-variant: normal;
@@ -36,7 +36,7 @@ h3 {
   line-height: 25px;
 }
 p {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
@@ -44,7 +44,7 @@ p {
   line-height: 25px;
 }
 blockquote {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 17px;
   font-style: normal;
   font-variant: normal;
@@ -52,7 +52,7 @@ blockquote {
   line-height: 25px;
 }
 pre {
-  font-family: Consolas, monaco, monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: 11px;
   font-style: normal;
   font-variant: normal;
@@ -149,7 +149,7 @@ pre {
   display: none;
 }
 
-#config {
+#features {
   background-color: rgba(71, 76, 88, 0.5);
   padding: 15px;
   line-height: 30px;
@@ -183,7 +183,7 @@ pre {
   background: rgba(50, 61, 77, 0.795);
 }
 
-#new-task {
+#new-task-btn {
   user-select: none;
   line-height: 15px;
   background-color: rgba(71, 76, 88, 0.5);
@@ -193,12 +193,21 @@ pre {
   margin-right: 1px;
 }
 
-#new-task:hover {
+#new-task-btn:hover {
   background-color: rgba(50, 61, 77, 0.795);
 }
-#new-task:active {
+#new-task-btn:active {
   background-color: rgba(50, 61, 77, 0.795);
   color: #3498db !important;
+}
+
+#task-detail {
+  z-index: 4;
+  display: none;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
+  position: relative;
 }
 
 #task-list {
@@ -209,7 +218,7 @@ pre {
 }
 
 #task-list .task {
-  user-select: none;
+  cursor: default;
   padding: 15px;
   height: 30px;
   margin-bottom: 1px;
@@ -242,8 +251,10 @@ pre {
   line-height: 30px;
 }
 
-#new-task-modal {
+#new-task {
   display: none;
+  padding: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
 }
 
 #open {
@@ -263,7 +274,7 @@ footer {
   font-size: 15px;
   height: 20px;
   z-index: 3;
-  width: 75%;
+  width: 100%;
   text-align: center;
   /* background-color: salmon; */
 }
@@ -272,17 +283,8 @@ footer {
 #msg {
   user-select: none;
   margin: auto;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.712)
-  );
-  background-repeat: no-repeat;
-  background-size: 80%;
-  animation: gradient 15s linear infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  width: inherit;
+  color: rgba(255, 255, 255, 0.2);
 }
 
 #loading {
