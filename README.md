@@ -1,3 +1,6 @@
-Just a tool to keep me organized at work, keep track of tasks, and general changes pertaining to my job.
+# task-master
+A tool I use at work pretty much as a todo list.
 
-This is probably a tool that will not work for others, but I'll leave it here in case there is something handy about it for anyone (but you can probably do better on your own).
+Node.js based, wrapped in Electron.
+
+Not sure why you're here, but that's it.
