@@ -61,8 +61,7 @@ ipcRenderer.on("init", (event, tArg) => {
 	scrollNextMessage();
 });
 
-let taskDetail = document.getElementById("task-detail");
-let taskHeader = document.getElementById("task-header"), taskDetails = document.getElementById("task-details")
+let taskDetail = document.getElementById("task-detail"), taskHeader = document.getElementById("task-header"), taskDetails = document.getElementById("task-details")
 	taskAuthor = document.getElementById("task-author"), taskDate = document.getElementById("task-date");
 
 document.getElementsByClassName("defaultOpen")[0].click();
@@ -176,9 +175,7 @@ function addOpen() {
 	obj.title = document.querySelectorAll('[name="title"]')[0].value;
 	obj.group = document.querySelectorAll('[name="group"]')[0].value;
 	obj.author = document.querySelectorAll('[name="author"]')[0].value;
-	obj.details = document.querySelectorAll(
-		'[name="details"]',
-	)[0].value;
+	obj.details = document.querySelectorAll('[name="details"]')[0].value;
 	obj.date = setDate();
 	tasks.open.push(obj);
 	console.log(tasks);

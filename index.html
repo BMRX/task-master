@@ -50,17 +50,17 @@
 
       <div id="new-task" class="page">
         <form action="javascript:addOpen();" id="task-form">
-          <input type="text" name="title" />
-          Name: <input type="text" name="author" /> 
-          Dept: 
-          <select name="group">
+          <input type="text" name="title" id="title" placeholder="Title..." />
+          <input type="text" name="author" id="author" placeholder="Author..." /> 
+          
+          <select name="group" plceholder="Department...">
             <option value="Snow School">Snow School</option>
             <option value="Tickets">Tickets</option>
             <option value="Rentals">Rentals</option>
             <option value="Retail">Retail</option>
             <option value="F&B">F&B</option>
           </select>
-          <textarea name="details" style="width: 100%; height: 250px; resize: none;"></textarea>
+          <textarea name="details" id="details"></textarea>
           <input type="submit" value="Submit" />
         </form>
       </div>

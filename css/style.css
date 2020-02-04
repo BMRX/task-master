@@ -257,6 +257,71 @@ pre {
   background-color: rgba(71, 76, 88, 0.5);
 }
 
+#new-task #title {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+input[type=text]#title {
+  background-color: rgba(36, 37, 39, 0.582);
+  border: 1px rgba(50, 61, 77, 0.8) solid;
+  color: #f3f3f3;
+  width: 90%;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+input[type=text]#author {
+  background-color: rgba(36, 37, 39, 0.582);
+  border: 1px rgba(50, 61, 77, 0.8) solid;
+  color: #f3f3f3;
+  width: 25%;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: #f3f3f3;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+textarea {
+  background-color: rgba(36, 37, 39, 0.582);
+  border: 1px rgba(50, 61, 77, 0.8) solid;
+  color: #f3f3f3;
+  width: 100%;
+  min-height: 250px;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+select {
+  background-color: rgba(36, 37, 39, 0.582);
+  border: 1px rgba(50, 61, 77, 0.8) solid;
+  color: #f3f3f3;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: #3498db;
+  outline-width: 1px;
+  
+}
+
 #open {
   overflow-y: scroll;
   height: calc(100% - 81px);
