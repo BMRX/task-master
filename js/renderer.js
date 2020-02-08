@@ -1,9 +1,7 @@
 const { ipcRenderer } = require("electron");
 const remote = require("electron").remote;
-const { fs } = require("fs");
 
-let tasks = {},
-	quotes;
+let tasks = {};
 
 // When document has loaded, initialise
 document.onreadystatechange = () => {
@@ -27,7 +25,8 @@ function handleWindowControls() {
 		win.maximize();
 	});
 
-	document.getElementById("restore-button")
+	document
+		.getElementById("restore-button")
 		.addEventListener("click", event => {
 			win.unmaximize();
 		});
@@ -54,26 +53,17 @@ function handleWindowControls() {
 
 ipcRenderer.on("init", (event, tArg) => {
 	tasks = tArg;
-	//setRandQuote();
+	document.getElementsByClassName("defaultOpen")[0].click();
 	populateLists();
-	//testObjects(100000);
-	console.log(tasks);
 	scrollNextMessage();
 });
 
-let taskDetail = document.getElementById("task-detail"), taskHeader = document.getElementById("task-header"), taskDetails = document.getElementById("task-details")
-	taskAuthor = document.getElementById("task-author"), taskDate = document.getElementById("task-date");
-
-document.getElementsByClassName("defaultOpen")[0].click();
-
-function setRandQuote() {
-	// document.getElementById("loading").innerHTML = "";
-	document.getElementById("msg").innerHTML = "";
-	var rand = quotes[Math.floor(Math.random() * quotes.length)];
-	document.getElementById("msg").innerHTML = rand;
-	// document.getElementById("loading").innerHTML = rand;
-	setTimeout(setRandQuote, 15000);
-}
+let taskDetail = document.getElementById("task-detail"),
+	taskHeader = document.getElementById("task-header"),
+	taskDetails = document.getElementById("task-details"),
+	taskAuthor = document.getElementById("task-author"),
+	taskDate = document.getElementById("task-date"),
+	taskStatus = document.getElementById("task-status");
 
 function showContent() {
 	//document.querySelector("#loading").style.display = "none";
@@ -81,30 +71,64 @@ function showContent() {
 }
 
 function populateLists() {
+	// Use this to update lists when an update is needed
+	// GETS
 	document.getElementById("open").innerHTML = "";
-	for(var i = 0; i < tasks.open.length; i++) {
-		let open = document.getElementById("open");
-		let closed = document.getElementById("closed");
-		let task = document.createElement("div");
-		task.setAttribute("id", i);
-		task.setAttribute("onclick", `lookupTask("open", ${i})`);
-		task.setAttribute("class", "task");
-		let left = document.createElement("div");
-		left.setAttribute("class", "left");
-		let right = document.createElement("div");
-		right.setAttribute("class", "right");
-		let title = document.createElement("p");
-		let date = document.createElement("p");
+	document.getElementById("closed").innerHTML = "";
 
-		title.innerText = tasks.open[i].title;
-		left.appendChild(title);
-		task.appendChild(left);
-		date.innerText = tasks.open[i].date;
-		right.appendChild(date);
-		task.appendChild(right);
-		open.appendChild(task);
+	// SETS
+	try {
+		for (var i = 0; i < tasks.open.length; i++) {
+			let open = document.getElementById("open");
+			let task = document.createElement("div");
+			task.setAttribute("id", i);
+			task.setAttribute("onclick", `lookupTask("open", ${i})`);
+			task.setAttribute("class", "task");
+			let left = document.createElement("div");
+			left.setAttribute("class", "left");
+			let right = document.createElement("div");
+			right.setAttribute("class", "right");
+			let title = document.createElement("p");
+			let date = document.createElement("p");
+
+			title.innerText = tasks.open[i].title;
+			left.appendChild(title);
+			task.appendChild(left);
+			date.innerText = tasks.open[i].date;
+			right.appendChild(date);
+			task.appendChild(right);
+			open.appendChild(task);
+		}
+	} catch (e) {
+		console.log(`No open tasks`);
 	}
-		
+
+	try {
+		for (var i = 0; i < tasks.closed.length; i++) {
+			let closed = document.getElementById("closed");
+			let task = document.createElement("div");
+			task.setAttribute("id", i);
+			task.setAttribute("onclick", `lookupTask("closed", ${i})`);
+			task.setAttribute("class", "task");
+			let left = document.createElement("div");
+			left.setAttribute("class", "left");
+			let right = document.createElement("div");
+			right.setAttribute("class", "right");
+			let title = document.createElement("p");
+			let date = document.createElement("p");
+	
+			title.innerText = tasks.closed[i].title;
+			left.appendChild(title);
+			task.appendChild(left);
+			date.innerText = tasks.closed[i].date;
+			right.appendChild(date);
+			task.appendChild(right);
+			closed.appendChild(task);
+		}
+	} catch (e) {
+		console.log(`No closed tasks`);
+	}
+	
 }
 
 function lookupTask(taskType, id) {
@@ -113,23 +137,26 @@ function lookupTask(taskType, id) {
 	taskAuthor.innerHTML = "";
 	taskDate.innerHTML = "";
 	taskDetails.innerHTML = "";
+	taskStatus.innerHTML = "";
 
-	if(taskType == "open") {
+	if (taskType == "open") {
 		console.log("TASKTYPE");
 		taskHeader.innerHTML = tasks.open[id].title;
 		taskAuthor.innerHTML = tasks.open[id].author;
 		taskDate.innerHTML = tasks.open[id].date;
 		taskDetails.innerHTML = tasks.open[id].details;
+		taskStatus.innerHTML = tasks.open[id].status;
 		activeBtn = document.getElementsByClassName("defaultOpen");
 		activeBtn[0].className = activeBtn[0].className.replace(" active", "");
 		document.getElementById(taskType).style.display = "none";
 		taskDetail.style.display = "block";
 	}
-	if(taskType == "closed") {
+	if (taskType == "closed") {
 		taskHeader.innerHTML = tasks.open[id].title;
 		taskAuthor.innerHTML = tasks.open[id].author;
 		taskDate.innerHTML = tasks.open[id].date;
 		taskDetails.innerHTML = tasks.open[id].details;
+		taskStatus.innerHTML = tasks.open[id].status;
 		document.getElementById(taskType).style.display = "none";
 		taskDetail.style.display = "block";
 	}
@@ -151,11 +178,11 @@ function syncAndClose() {
 function togglePage(evt, name) {
 	var i, pages, btns;
 	closeTaskDetail();
-	if(taskDetail.style.display == "block") {
+	if (taskDetail.style.display == "block") {
 		console.log("hi");
 		// closeTaskDetail();
 	}
-	
+
 	pages = document.getElementsByClassName("page");
 	for (i = 0; i < pages.length; i++) {
 		pages[i].style.display = "none";
@@ -176,12 +203,17 @@ function addOpen() {
 	obj.group = document.querySelectorAll('[name="group"]')[0].value;
 	obj.author = document.querySelectorAll('[name="author"]')[0].value;
 	obj.details = document.querySelectorAll('[name="details"]')[0].value;
+	obj.status = "open";
 	obj.date = setDate();
 	tasks.open.push(obj);
 	console.log(tasks);
 	populateLists();
 	document.getElementById("task-form").reset();
 	document.getElementsByClassName("defaultOpen")[0].click();
+}
+
+function addClosed(id) {
+
 }
 
 function setDate() {
@@ -192,16 +224,6 @@ function setDate() {
 
 	newdate = day + "/" + month + "/" + year;
 	return newdate;
-}
-
-/* Testing */
-function testObjects(x) {
-	tasks.open = [];
-	tasks.closed = [];
-	for (let i = 0; i < x; i++) {
-		tasks.open.push({ open: i });
-		tasks.closed.push({ closed: i });
-	}
 }
 
 /* News ticker */
@@ -238,7 +260,7 @@ function updateNewsArray() {
 			true,
 			"a18",
 		],
-		["It’s super effective!", true, "a19"],
+		["It's super effective!", true, "a19"],
 		["Praise the sun!", true, "a20"],
 		["When God gives you lemons, you find a new God.", true, "a21"],
 		[

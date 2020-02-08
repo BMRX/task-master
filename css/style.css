@@ -180,25 +180,8 @@ pre {
 }
 
 #page-buttons .btn:hover {
-  background: rgba(50, 61, 77, 0.795);
-}
-
-#new-task-btn {
-  user-select: none;
-  line-height: 15px;
-  background-color: rgba(71, 76, 88, 0.5);
-  display: inline-block;
-  padding: 5px 15px 5px 15px;
-  cursor: default;
-  margin-right: 1px;
-}
-
-#new-task-btn:hover {
-  background-color: rgba(50, 61, 77, 0.795);
-}
-#new-task-btn:active {
-  background-color: rgba(50, 61, 77, 0.795);
-  color: #3498db !important;
+  cursor: pointer;
+  background: rgba(55, 81, 119, 0.795);
 }
 
 #task-detail {
@@ -218,6 +201,7 @@ pre {
 }
 
 #task-list .task {
+  user-select: none;
   cursor: default;
   padding: 15px;
   height: 30px;
@@ -228,7 +212,8 @@ pre {
 }
 
 #task-list .task:hover {
-  background-color: rgba(50, 61, 77, 0.795);
+  cursor: pointer;
+  background: rgba(55, 81, 119, 0.795);
 }
 
 #task-list .task .left {
@@ -264,6 +249,23 @@ pre {
   resize: none;
 }
 
+.gButton {
+  user-select: none;
+  line-height: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
+  border: 1px rgba(82, 96, 117, 0.8) solid;
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  margin-right: 1px;
+  cursor: default;
+  color: #fff;
+}
+
+.gButton:hover {
+  cursor: pointer;
+  background: rgba(55, 81, 119, 0.795);
+}
+
 input[type=text]#title {
   background-color: rgba(36, 37, 39, 0.582);
   border: 1px rgba(50, 61, 77, 0.8) solid;
@@ -285,16 +287,20 @@ input[type=text]#author {
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
-  color: #f3f3f3;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  user-select: none;
+  line-height: 15px;
+  background-color: rgba(71, 76, 88, 0.5);
+  border: 1px rgba(82, 96, 117, 0.8) solid;
+  display: inline-block;
+  padding: 5px 10px 5px 10px;
+  margin-right: 1px;
+  cursor: default;
+  color: #fff;
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  cursor: pointer;
+  background: rgba(55, 81, 119, 0.795);
 }
 
 textarea {
