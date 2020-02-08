@@ -58,7 +58,8 @@ ipcRenderer.on("init", (event, tArg) => {
 	scrollNextMessage();
 });
 
-let taskDetail = document.getElementById("task-detail"),
+let taskID = document.getElementById("task-id"),
+	taskDetail = document.getElementById("task-detail"),
 	taskHeader = document.getElementById("task-header"),
 	taskDetails = document.getElementById("task-details"),
 	taskAuthor = document.getElementById("task-author"),
@@ -133,6 +134,7 @@ function populateLists() {
 
 function lookupTask(taskType, id) {
 	let activeBtn;
+	taskID.innerHTML = "";
 	taskHeader.innerHTML = "";
 	taskAuthor.innerHTML = "";
 	taskDate.innerHTML = "";
@@ -141,22 +143,24 @@ function lookupTask(taskType, id) {
 
 	if (taskType == "open") {
 		console.log("TASKTYPE");
+		taskID.innerHTML = id;
 		taskHeader.innerHTML = tasks.open[id].title;
 		taskAuthor.innerHTML = tasks.open[id].author;
 		taskDate.innerHTML = tasks.open[id].date;
 		taskDetails.innerHTML = tasks.open[id].details;
 		taskStatus.innerHTML = tasks.open[id].status;
-		activeBtn = document.getElementsByClassName("defaultOpen");
-		activeBtn[0].className = activeBtn[0].className.replace(" active", "");
+		// activeBtn = document.getElementsByClassName("defaultOpen");
+		// activeBtn[0].className = activeBtn[0].className.replace(" active", "");
 		document.getElementById(taskType).style.display = "none";
 		taskDetail.style.display = "block";
 	}
 	if (taskType == "closed") {
-		taskHeader.innerHTML = tasks.open[id].title;
-		taskAuthor.innerHTML = tasks.open[id].author;
-		taskDate.innerHTML = tasks.open[id].date;
-		taskDetails.innerHTML = tasks.open[id].details;
-		taskStatus.innerHTML = tasks.open[id].status;
+		taskID.innerHTML = id;
+		taskHeader.innerHTML = tasks.closed[id].title;
+		taskAuthor.innerHTML = tasks.closed[id].author;
+		taskDate.innerHTML = tasks.closed[id].date;
+		taskDetails.innerHTML = tasks.closed[id].details;
+		taskStatus.innerHTML = tasks.closed[id].status;
 		document.getElementById(taskType).style.display = "none";
 		taskDetail.style.display = "block";
 	}
@@ -205,14 +209,23 @@ function addOpen() {
 	obj.details = document.querySelectorAll('[name="details"]')[0].value;
 	obj.status = "open";
 	obj.date = setDate();
-	tasks.open.push(obj);
-	console.log(tasks);
-	populateLists();
-	document.getElementById("task-form").reset();
-	document.getElementsByClassName("defaultOpen")[0].click();
+
+	if(obj.title.length > 3 && obj.group.length > 0 && obj.author.length > 3 && obj.details.length > 3) {
+		tasks.open.push(obj);
+		populateLists();
+		document.getElementById("task-form").reset();
+		document.getElementsByClassName("defaultOpen")[0].click();
+	} else {
+		console.log(`Empty values!`);
+	}
+	
 }
 
 function addClosed(id) {
+
+}
+
+function deleteTask(id) {
 
 }
 
