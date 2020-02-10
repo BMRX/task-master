@@ -64,7 +64,8 @@ let taskID = document.getElementById("task-id"),
 	taskDetails = document.getElementById("task-details"),
 	taskAuthor = document.getElementById("task-author"),
 	taskDate = document.getElementById("task-date"),
-	taskStatus = document.getElementById("task-status");
+	taskStatus = document.getElementById("task-status"),
+	closeTaskBtn = document.getElementById("close-task");
 
 function showContent() {
 	//document.querySelector("#loading").style.display = "none";
@@ -127,7 +128,7 @@ function populateLists() {
 			closed.appendChild(task);
 		}
 	} catch (e) {
-		console.log(`No closed tasks`);
+		console.log(e);
 	}
 	
 }
@@ -152,6 +153,7 @@ function lookupTask(taskType, id) {
 		// activeBtn = document.getElementsByClassName("defaultOpen");
 		// activeBtn[0].className = activeBtn[0].className.replace(" active", "");
 		document.getElementById(taskType).style.display = "none";
+		closeTaskBtn.style.display = "inline-block";
 		taskDetail.style.display = "block";
 	}
 	if (taskType == "closed") {
@@ -162,6 +164,7 @@ function lookupTask(taskType, id) {
 		taskDetails.innerHTML = tasks.closed[id].details;
 		taskStatus.innerHTML = tasks.closed[id].status;
 		document.getElementById(taskType).style.display = "none";
+		closeTaskBtn.style.display = "none";
 		taskDetail.style.display = "block";
 	}
 }
@@ -222,7 +225,11 @@ function addOpen() {
 }
 
 function addClosed(id) {
-
+	tasks.open[id].status = "closed";
+	tasks.closed.push(tasks.open[id]);
+	tasks.open.splice(id, 1);
+	populateLists();
+	document.getElementsByClassName("defaultOpen")[0].click();
 }
 
 function deleteTask(id) {
